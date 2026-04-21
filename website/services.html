@@ -9,173 +9,85 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
-    /* ── PAGE HERO ── */
-    .page-hero {
-      min-height: 60vh;
-      background: var(--navy);
-      display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 140px 10vw 80px;
-      position: relative; overflow: hidden;
-    }
-    .page-hero-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 50% 70% at 90% 30%, rgba(201,168,76,0.07) 0%, transparent 60%);
-    }
-    .page-hero-grid {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
-      background-size: 80px 80px;
-      animation: gridShift 20s linear infinite;
-    }
-    @keyframes gridShift { 0% { transform: translateY(0); } 100% { transform: translateY(80px); } }
-    .page-hero-content { position: relative; z-index: 1; max-width: 800px; }
-    .page-eyebrow {
-      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-      color: var(--gold); font-weight: 600; margin-bottom: 20px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .page-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-    .page-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(42px, 6vw, 72px);
-      color: var(--cream); font-weight: 900; line-height: 1.1;
-      letter-spacing: -1px; margin-bottom: 20px;
-    }
+    .page-hero { min-height: 65vh; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 10vw 80px; position: relative; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 70% at 90% 20%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+    .page-hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 80px 80px; animation: gridShift 20s linear infinite; }
+    @keyframes gridShift { 0%{transform:translateY(0)} 100%{transform:translateY(80px)} }
+    .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 70px); color: var(--cream); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; position: relative; z-index: 1; }
     .page-hero h1 em { color: var(--gold); font-style: italic; }
-    .page-hero p {
-      font-size: 18px; color: rgba(245,240,232,0.55);
-      line-height: 1.7; max-width: 540px;
-    }
+    .page-hero p { font-size: 18px; color: rgba(245,240,232,0.5); line-height: 1.75; max-width: 560px; position: relative; z-index: 1; }
 
-    /* ── OFFER BLOCK ── */
-    .offer-section { padding: 100px 10vw; background: var(--cream); }
-    .offer-inner { max-width: 1060px; margin: 0 auto; }
-    .offer-main {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; align-items: start; margin-bottom: 80px;
-    }
-    .offer-label {
-      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-      color: var(--gold); font-weight: 600; margin-bottom: 20px; display: block;
-    }
-    .offer-main h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.5vw, 40px);
-      color: var(--navy); line-height: 1.2; margin-bottom: 20px;
-    }
-    .offer-main p {
-      font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px;
-    }
-    .offer-main strong { color: var(--navy); font-weight: 600; }
-    .offer-detail {
-      background: var(--navy); border-radius: 16px; padding: 40px 36px;
-      display: flex; flex-direction: column; gap: 20px;
-    }
-    .offer-detail-tag {
-      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); font-weight: 600;
-    }
-    .offer-detail h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px; color: var(--cream); line-height: 1.3;
-    }
-    .offer-items { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
-    .offer-item {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; color: rgba(245,240,232,0.7);
-    }
-    .offer-item::before {
-      content: ''; width: 20px; height: 1px;
-      background: var(--gold); flex-shrink: 0;
-    }
-    .offer-bold {
-      font-size: 14px; font-weight: 600; color: var(--gold);
-      padding-top: 16px; border-top: 1px solid rgba(245,240,232,0.1);
-    }
+    /* ── BODY SECTIONS ── */
+    .body-section { padding: 100px 10vw; }
+    .body-inner { max-width: 860px; margin: 0 auto; }
 
-    /* ── DIAGNOSTIC BLOCK ── */
-    .diagnostic {
-      background: var(--cream-dark); border-radius: 16px;
-      padding: 48px; display: grid;
-      grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
-    }
-    .diagnostic h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(24px, 3vw, 36px);
-      color: var(--navy); line-height: 1.3; margin-bottom: 16px;
-    }
-    .diagnostic p { font-size: 16px; color: var(--muted); line-height: 1.8; }
-    .diag-steps { display: flex; flex-direction: column; gap: 20px; }
-    .diag-step {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding-bottom: 20px; border-bottom: 1px solid rgba(26,39,68,0.1);
-    }
-    .diag-step:last-child { border-bottom: none; padding-bottom: 0; }
-    .diag-num {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: var(--navy); color: var(--gold);
-      font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .diag-body h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px; color: var(--navy); margin-bottom: 4px;
-    }
-    .diag-body p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .body-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 38px); color: var(--navy); line-height: 1.4; margin-bottom: 36px; font-weight: 400; }
+    .body-lead em { color: var(--gold); font-style: italic; }
+    .body-text { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+    .body-text strong { color: var(--charcoal); font-weight: 600; }
 
-    /* ── SPECIALIST AREAS ── */
-    .areas-section { padding: 100px 10vw; background: var(--navy); }
+    /* ── OFFER CARD ── */
+    .offer-card {
+      background: var(--navy); border-radius: 20px; padding: 56px 52px;
+      margin: 56px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start;
+    }
+    .offer-card-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px,3vw,36px); color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
+    .offer-card-left p { font-size: 16px; color: rgba(245,240,232,0.55); line-height: 1.8; margin-bottom: 16px; }
+    .offer-card-left em { color: var(--gold); font-style: italic; }
+    .offer-card-right { display: flex; flex-direction: column; gap: 16px; }
+    .offer-detail { border-left: 2px solid rgba(201,168,76,0.3); padding: 0 0 0 20px; }
+    .offer-detail h4 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--cream); margin-bottom: 4px; }
+    .offer-detail p { font-size: 13px; color: rgba(245,240,232,0.45); line-height: 1.6; }
+    .offer-detail.highlight { border-color: var(--gold); }
+    .offer-detail.highlight h4 { color: var(--gold); }
+    .offer-detail.highlight p { color: rgba(245,240,232,0.7); }
+
+    /* ── DIAGNOSTIC ── */
+    .diag-section { background: var(--cream-dark); padding: 100px 10vw; }
+    .diag-inner { max-width: 860px; margin: 0 auto; }
+    .diag-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color: var(--navy); line-height: 1.35; margin-bottom: 32px; }
+    .diag-lead em { color: var(--gold); font-style: italic; }
+    .diag-body { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+    .diag-steps { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+    .diag-step { display: grid; grid-template-columns: 48px 1fr; gap: 24px; padding: 32px 0; border-bottom: 1px solid rgba(26,39,68,0.1); align-items: start; }
+    .diag-step:last-child { border-bottom: none; }
+    .diag-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--gold); opacity: 0.2; line-height: 1; transition: opacity 0.3s; }
+    .diag-step:hover .diag-num { opacity: 0.7; }
+    .diag-body-text h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 8px; }
+    .diag-body-text p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+    /* ── AREAS ── */
+    .areas-section { background: var(--cream); padding: 100px 10vw; }
     .areas-inner { max-width: 1060px; margin: 0 auto; }
-    .areas-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.5vw, 44px);
-      color: var(--cream); margin-bottom: 12px;
-    }
-    .areas-section > .areas-inner > p {
-      font-size: 17px; color: rgba(245,240,232,0.45);
-      margin-bottom: 56px; max-width: 500px; line-height: 1.7;
-    }
-    .areas-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 1px; background: rgba(245,240,232,0.07);
-      border: 1px solid rgba(245,240,232,0.07);
-      border-radius: 12px; overflow: hidden;
-    }
-    .area-item {
-      padding: 36px 28px; background: var(--navy);
-      transition: background 0.3s; position: relative; overflow: hidden;
-    }
-    .area-item::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 3px; height: 0;
-      background: var(--gold);
-      transition: height 0.4s ease;
-    }
-    .area-item:hover { background: var(--navy-light); }
-    .area-item:hover::before { height: 100%; }
-    .area-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700; color: var(--gold);
-      opacity: 0.25; margin-bottom: 10px;
-    }
-    .area-item h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px; color: var(--cream); margin-bottom: 8px;
-    }
-    .area-item p { font-size: 13px; color: rgba(245,240,232,0.4); line-height: 1.6; }
+    .areas-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color: var(--navy); max-width: 680px; line-height: 1.35; margin-bottom: 16px; }
+    .areas-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 56px; }
+    .areas-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(26,39,68,0.08); border: 1px solid rgba(26,39,68,0.08); border-radius: 14px; overflow: hidden; }
+    .area { background: var(--cream); padding: 32px 28px; transition: background 0.3s; position: relative; }
+    .area:hover { background: white; }
+    .area::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--gold); transition: height 0.4s; }
+    .area:hover::before { height: 100%; }
+    .area h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+    .area p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── HOOK ── */
+    .hook { background: var(--navy); padding: 80px 10vw; }
+    .hook-inner { max-width: 760px; }
+    .hook p { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,34px); color: var(--cream); line-height: 1.45; margin-bottom: 32px; font-style: italic; }
+    .hook p em { color: var(--gold); }
+    .hook-links { display: flex; gap: 32px; flex-wrap: wrap; }
+    .hook-link { font-size: 15px; font-weight: 600; color: var(--cream); text-decoration: none; display: flex; align-items: center; gap: 8px; opacity: 0.6; transition: opacity 0.2s, gap 0.2s; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 2px; }
+    .hook-link:hover { opacity: 1; gap: 14px; }
 
     @media (max-width: 900px) {
-      .offer-main { grid-template-columns: 1fr; }
-      .diagnostic { grid-template-columns: 1fr; padding: 32px; }
+      .offer-card { grid-template-columns: 1fr; padding: 36px 28px; }
       .areas-grid { grid-template-columns: 1fr; }
-      .offer-section, .areas-section { padding: 80px 6vw; }
+      .body-section, .diag-section, .areas-section, .hook { padding: 80px 6vw; }
     }
   </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo">
     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="94" r="3.5" fill="currentColor"/><circle cx="6" cy="50" r="3.5" fill="currentColor"/><circle cx="94" cy="50" r="3.5" fill="currentColor"/><circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/><circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/><circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/><circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/></svg>
@@ -192,125 +104,114 @@
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-grid"></div>
-  <div class="page-hero-content">
-    <div class="page-eyebrow">What we do</div>
-    <h1>Embedded. Accountable.<br><em>Execution-led.</em></h1>
-    <p>We don't advise from the outside. We step in, take ownership, and deliver — week after week.</p>
+  <div class="eyebrow" style="position:relative;z-index:1;">What we do</div>
+  <h1>We don't give you a plan<br>and wish you luck.<br>We <em>stay and deliver it.</em></h1>
+  <p>There's a reason most businesses that hire consultants are back to square one six months later. Advice without execution is just expensive reading.</p>
+</section>
+
+<section class="body-section" style="background:var(--cream);">
+  <div class="body-inner">
+    <p class="body-lead reveal">The model is simple. <em>We embed into your team</em> and run operations — as if we were your COO.</p>
+    <p class="body-text reveal d1">We're not here to observe and report back. We're in your weekly leadership meeting. We're managing your ops team. We're having the hard conversations with suppliers. We're fixing what's broken while you focus on everything else.</p>
+    <p class="body-text reveal d2">One to three days a week. As long as it takes. When the business can run without us, we leave — and the systems, the structure, and the team stay.</p>
   </div>
 </section>
 
-<!-- CORE OFFER -->
-<section class="offer-section">
-  <div class="offer-inner">
-    <div class="offer-main reveal">
-      <div>
-        <span class="offer-label">Core offer</span>
-        <h2>Embedded Operations Lead</h2>
-        <p>We become part of your leadership team. Not as a consultant who visits once a month, but as an embedded ops lead who is genuinely inside your business.</p>
-        <p>We own your operations. We manage your ops team. We hold the function accountable and drive outcomes — <strong>every single week.</strong></p>
-        <p>When we leave, the systems stay. So does the team's ability to run them.</p>
+<div class="body-section" style="background:var(--cream); padding-top:0;">
+  <div style="max-width:1060px;margin:0 auto;">
+    <div class="offer-card reveal">
+      <div class="offer-card-left">
+        <h2>Embedded Operations Lead <em>(COO-Level)</em></h2>
+        <p>This is the core of what we do. We join your business as your embedded ops lead — part of the team, part of the room, part of the decisions.</p>
+        <p>Not a consultant you call when things go wrong. Someone who's there before they do.</p>
       </div>
-      <div class="offer-detail reveal reveal-delay-1">
-        <div class="offer-detail-tag">What this looks like</div>
-        <h3>COO-level execution. Fractional commitment.</h3>
-        <div class="offer-items">
-          <div class="offer-item">1–3 days per week inside your business</div>
-          <div class="offer-item">Part of your leadership team — in the room</div>
-          <div class="offer-item">Direct management of your ops function</div>
-          <div class="offer-item">KPI ownership and weekly accountability</div>
-          <div class="offer-item">Systems and processes built to last</div>
+      <div class="offer-card-right">
+        <div class="offer-detail highlight">
+          <h4>In your leadership team</h4>
+          <p>We attend your meetings, join your calls, sit in your decisions.</p>
         </div>
-        <div class="offer-bold">This is not advisory. We take responsibility for outcomes.</div>
-      </div>
-    </div>
-
-    <div class="diagnostic reveal">
-      <div>
-        <span class="offer-label">Entry point</span>
-        <h2>Operations Diagnostic → Execution Plan</h2>
-        <p>Before taking ownership, we run a focused diagnostic. We identify what's genuinely broken, what's being ignored, and where the biggest leverage sits.</p>
-        <p style="margin-top:16px; font-size:15px; font-weight:600; color:var(--navy);">Then we stay and deliver it.</p>
-      </div>
-      <div class="diag-steps">
-        <div class="diag-step">
-          <div class="diag-num">1</div>
-          <div class="diag-body">
-            <h4>Understand the business</h4>
-            <p>Time inside your team — learning the reality, not just the story.</p>
-          </div>
+        <div class="offer-detail">
+          <h4>Running your ops function</h4>
+          <p>Managing the team, the suppliers, the day-to-day — properly.</p>
         </div>
-        <div class="diag-step">
-          <div class="diag-num">2</div>
-          <div class="diag-body">
-            <h4>Identify the constraints</h4>
-            <p>What's actually broken. What's being masked. Where the real leverage is.</p>
-          </div>
+        <div class="offer-detail">
+          <h4>Owning KPIs and delivery</h4>
+          <p>We're accountable. Not just present.</p>
         </div>
-        <div class="diag-step">
-          <div class="diag-num">3</div>
-          <div class="diag-body">
-            <h4>Build the execution plan</h4>
-            <p>Prioritised, actionable, honest. Not a 40-page strategy document.</p>
-          </div>
+        <div class="offer-detail">
+          <h4>1–3 days per week</h4>
+          <p>Consistent. Committed. Not parachuted in and out.</p>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<section class="diag-section">
+  <div class="diag-inner">
+    <p class="diag-lead reveal">Not sure where to start? That's what <em>the diagnostic</em> is for.</p>
+    <p class="diag-body reveal d1">Before we take ownership of anything, we spend time properly understanding what's actually going on. Not the polished version — the real one. Where the problems are, what's causing them, what needs to change first.</p>
+    <p class="diag-body reveal d2">Most founders are so deep in it they can't see the shape of the problem anymore. We can. And once we've mapped it, we build a plan — and then we stay to execute it. That's the difference.</p>
+    <div class="diag-steps">
+      <div class="diag-step reveal">
+        <div class="diag-num">01</div>
+        <div class="diag-body-text">
+          <h3>Time in the business</h3>
+          <p>Not a questionnaire. Not a survey. We spend real time inside your operation, learning the reality.</p>
+        </div>
+      </div>
+      <div class="diag-step reveal d1">
+        <div class="diag-num">02</div>
+        <div class="diag-body-text">
+          <h3>Find the real constraints</h3>
+          <p>What's genuinely broken, what's being masked, where the highest leverage is. We surface it clearly.</p>
+        </div>
+      </div>
+      <div class="diag-step reveal d2">
+        <div class="diag-num">03</div>
+        <div class="diag-body-text">
+          <h3>Build — then deliver — the plan</h3>
+          <p>We don't hand you a document and leave. We build the execution plan and then we stay to deliver it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- SPECIALIST AREAS -->
 <section class="areas-section">
   <div class="areas-inner">
-    <span class="offer-label reveal" style="color:var(--gold);">Specialist areas</span>
-    <h2 class="reveal reveal-delay-1">Where we drive the most impact</h2>
-    <p class="reveal reveal-delay-2">Founder-led consumer businesses between £5m–£25m, scaling fast, with operations struggling to keep up.</p>
-    <div class="areas-grid reveal reveal-delay-3">
-      <div class="area-item">
-        <div class="area-num">01</div>
-        <h4>Supply Chain</h4>
-        <p>End-to-end optimisation — suppliers, lead times, stock management, inbound and outbound flows.</p>
-      </div>
-      <div class="area-item">
-        <div class="area-num">02</div>
-        <h4>S&OP</h4>
-        <p>Sales and operations planning built from scratch, embedded into the team and genuinely running.</p>
-      </div>
-      <div class="area-item">
-        <div class="area-num">03</div>
-        <h4>3PL & Logistics</h4>
-        <p>Carrier selection, 3PL setup and management, international distribution build-out.</p>
-      </div>
-      <div class="area-item">
-        <div class="area-num">04</div>
-        <h4>NPD Execution</h4>
-        <p>New product development from concept to commercial launch — on time, on budget.</p>
-      </div>
-      <div class="area-item">
-        <div class="area-num">05</div>
-        <h4>Team Structure</h4>
-        <p>Clear ownership, accountability frameworks, and an operational cadence that actually sticks.</p>
-      </div>
-      <div class="area-item">
-        <div class="area-num">06</div>
-        <h4>Scaling Infrastructure</h4>
-        <p>The systems, processes, and people structures that support the next stage of growth.</p>
-      </div>
+    <p class="areas-lead reveal">The areas where we tend to make the biggest difference</p>
+    <p class="areas-sub reveal d1">Not a complete list — but if any of these sound familiar, we should talk.</p>
+    <div class="areas-grid reveal d2">
+      <div class="area"><h4>Supply chain & logistics</h4><p>End-to-end — from suppliers and lead times to stock management and distribution.</p></div>
+      <div class="area"><h4>S&OP</h4><p>Sales and operations planning built properly, embedded into the team, and actually running.</p></div>
+      <div class="area"><h4>3PL & international ops</h4><p>Warehouse partners, carrier relationships, international market entry — built to last.</p></div>
+      <div class="area"><h4>NPD to launch</h4><p>New products from concept to commercial launch. On time. On budget. No last-minute panic.</p></div>
+      <div class="area"><h4>Team structure & accountability</h4><p>Clear ownership, clear KPIs, a team that knows what they're responsible for.</p></div>
+      <div class="area"><h4>Scaling infrastructure</h4><p>Building the operational foundation that doesn't fall apart at the next stage of growth.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<div class="hook">
+  <div class="hook-inner reveal">
+    <p>Curious about what this looks like in practice? <em>The case studies are worth a read.</em></p>
+    <div class="hook-links">
+      <a href="case-studies.html" class="hook-link">See the work →</a>
+      <a href="about.html" class="hook-link">Who we are →</a>
+    </div>
+  </div>
+</div>
+
 <section class="cta-section">
   <div class="cta-bg"></div>
   <svg class="cta-wheel" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#C9A84C" stroke-width="2"/><circle cx="50" cy="50" r="10" stroke="#C9A84C" stroke-width="1.5"/><circle cx="50" cy="50" r="5" fill="#C9A84C"/><line x1="50" y1="40" x2="50" y2="6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
   <div class="cta-inner reveal">
-    <span class="offer-label" style="color:var(--gold);">Ready?</span>
-    <h2>If operations are slowing your growth,<br><em>let's fix it.</em></h2>
-    <p>Book a 30-minute intro call. We'll understand the challenge and tell you honestly whether we can help.</p>
+    <h2>Ready to fix it?<br><em>Let's talk.</em></h2>
+    <p>30 minutes. No pitch. Just a real conversation about what's going on and whether we can help.</p>
     <a href="contact.html" class="btn-hero">Book an intro call</a>
   </div>
 </section>

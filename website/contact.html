@@ -9,71 +9,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
-    .page-hero {
-      min-height: 55vh; background: var(--navy);
-      display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 140px 10vw 80px;
-      position: relative; overflow: hidden;
-    }
-    .page-hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 60% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+    .page-hero { min-height: 60vh; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 10vw 80px; position: relative; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 70% at 20% 80%, rgba(201,168,76,0.07) 0%, transparent 60%); }
     .page-hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 80px 80px; animation: gridShift 20s linear infinite; }
-    @keyframes gridShift { 0% { transform: translateY(0); } 100% { transform: translateY(80px); } }
-    .page-hero-content { position: relative; z-index: 1; max-width: 700px; }
-    .page-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-    .page-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 6vw, 72px); color: var(--cream); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+    @keyframes gridShift { 0%{transform:translateY(0)} 100%{transform:translateY(80px)} }
+    .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 70px); color: var(--cream); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; position: relative; z-index: 1; }
     .page-hero h1 em { color: var(--gold); font-style: italic; }
-    .page-hero p { font-size: 18px; color: rgba(245,240,232,0.55); line-height: 1.7; max-width: 520px; }
+    .page-hero p { font-size: 18px; color: rgba(245,240,232,0.5); line-height: 1.75; max-width: 560px; position: relative; z-index: 1; }
 
     /* ── CONTACT BODY ── */
     .contact-section { padding: 100px 10vw; background: var(--cream); }
-    .contact-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contact-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
 
-    /* Left col */
-    .contact-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,34px); color: var(--navy); margin-bottom: 16px; }
-    .contact-left p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
-    .contact-details { display: flex; flex-direction: column; gap: 20px; }
-    .contact-detail { display: flex; align-items: flex-start; gap: 16px; }
-    .cd-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-    .cd-body h4 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .cd-body a, .cd-body p { font-size: 15px; color: var(--navy); font-weight: 500; text-decoration: none; line-height: 1.5; }
-    .cd-body a:hover { color: var(--gold); }
+    .contact-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,34px); color: var(--navy); margin-bottom: 20px; line-height: 1.3; }
+    .contact-left p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .contact-left strong { color: var(--charcoal); font-weight: 600; }
 
-    /* Calendly placeholder */
-    .cal-block {
-      margin-top: 32px; padding: 28px 24px;
-      border: 1.5px dashed rgba(26,39,68,0.2); border-radius: 12px;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; gap: 10px;
-    }
-    .cal-block p { font-size: 13px; color: var(--muted); }
-    .cal-block .cal-label { font-size: 15px; font-weight: 600; color: var(--navy); }
+    .what-to-expect { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+    .expect-item { display: flex; gap: 16px; align-items: flex-start; }
+    .expect-num { width: 28px; height: 28px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+    .expect-text h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+    .expect-text p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .contact-direct { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(26,39,68,0.1); }
+    .contact-direct p { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+    .contact-direct a { font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
 
     /* Form */
-    .contact-form-wrap { background: white; border-radius: 16px; padding: 40px 36px; border: 1px solid rgba(26,39,68,0.08); box-shadow: 0 8px 32px rgba(26,39,68,0.06); }
-    .contact-form-wrap h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 28px; }
+    .form-wrap { background: var(--navy); border-radius: 20px; padding: 48px 44px; }
+    .form-wrap h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); margin-bottom: 8px; }
+    .form-wrap > p { font-size: 14px; color: rgba(245,240,232,0.45); margin-bottom: 32px; line-height: 1.6; }
     .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 7px; }
     .form-group input, .form-group textarea {
       width: 100%; padding: 13px 15px;
-      border: 1.5px solid rgba(26,39,68,0.12); border-radius: 8px;
-      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--charcoal);
-      background: var(--cream); transition: border-color 0.2s, background 0.2s;
+      border: 1.5px solid rgba(245,240,232,0.1); border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--cream);
+      background: rgba(245,240,232,0.06); transition: border-color 0.2s, background 0.2s;
     }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: white; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(245,240,232,0.2); }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: rgba(245,240,232,0.09); }
     .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit { width: 100%; padding: 15px; background: var(--navy); color: var(--cream); border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.2s; }
-    .form-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-1px); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-submit { width: 100%; padding: 15px; background: var(--gold); color: var(--navy); border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 8px; }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
 
     @media (max-width: 900px) {
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .contact-section { padding: 80px 6vw; }
-      .contact-form-wrap { padding: 28px 24px; }
+      .form-wrap { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo">
     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="94" r="3.5" fill="currentColor"/><circle cx="6" cy="50" r="3.5" fill="currentColor"/><circle cx="94" cy="50" r="3.5" fill="currentColor"/><circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/><circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/><circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/><circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/></svg>
@@ -93,62 +84,72 @@
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-grid"></div>
-  <div class="page-hero-content">
-    <div class="page-eyebrow">Get in touch</div>
-    <h1>Let's fix your<br><em>operations.</em></h1>
-    <p>Book a 30-minute intro call. We'll quickly understand the challenge and tell you honestly whether we can help.</p>
-  </div>
+  <div class="eyebrow">Get in touch</div>
+  <h1>No hard sell.<br>Just a <em>real conversation.</em></h1>
+  <p>Tell us what's going on. We'll tell you honestly whether we can help. If we're not the right fit, we'll say so — and we'll probably know someone who is.</p>
 </section>
 
 <section class="contact-section">
   <div class="contact-inner">
 
     <div class="contact-left reveal">
-      <h2>Start the conversation</h2>
-      <p>No hard sell, no long pitch process. Just a straightforward conversation about what's going on in your business and whether we're the right fit.</p>
-      <div class="contact-details">
-        <div class="contact-detail">
-          <div class="cd-icon">✉️</div>
-          <div class="cd-body">
-            <h4>Email</h4>
-            <a href="mailto:hello@atthehelm.co">hello@atthehelm.co</a>
+      <h2>What happens when you get in touch</h2>
+      <p>We know what it's like to be a founder who's been through three "discovery calls" this month and spent an hour getting pitched to each time. <strong>That's not what this is.</strong></p>
+      <p>You tell us what's going on. We listen. We ask questions. We give you an honest read — even if that read is that we're not the right fit right now.</p>
+
+      <div class="what-to-expect">
+        <div class="expect-item">
+          <div class="expect-num">1</div>
+          <div class="expect-text">
+            <h4>You fill in the form or drop us an email</h4>
+            <p>Tell us roughly what's happening — doesn't need to be polished.</p>
           </div>
         </div>
-        <div class="contact-detail">
-          <div class="cd-icon">📍</div>
-          <div class="cd-body">
-            <h4>Based</h4>
-            <p>UK — working with brands nationally and internationally</p>
+        <div class="expect-item">
+          <div class="expect-num">2</div>
+          <div class="expect-text">
+            <h4>We come back to you within 48 hours</h4>
+            <p>A real reply, from a real person. Not an automated sequence.</p>
+          </div>
+        </div>
+        <div class="expect-item">
+          <div class="expect-num">3</div>
+          <div class="expect-text">
+            <h4>We have a 30-minute conversation</h4>
+            <p>We understand the situation. We tell you honestly whether we can help and what that would look like.</p>
           </div>
         </div>
       </div>
-      <div class="cal-block">
-        <svg style="width:32px;height:32px;opacity:0.25;" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#1a2744" stroke-width="3"/><circle cx="50" cy="50" r="10" stroke="#1a2744" stroke-width="2"/><circle cx="50" cy="50" r="5" fill="#1a2744"/><line x1="50" y1="40" x2="50" y2="6" stroke="#1a2744" stroke-width="2" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="#1a2744" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="#1a2744" stroke-width="2" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="#1a2744" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="cal-label">Direct booking</span>
-        <p>Calendly integration coming soon — email us to schedule a call directly.</p>
+
+      <div class="contact-direct">
+        <p>Prefer to go direct?</p>
+        <a href="mailto:hello@atthehelm.co">hello@atthehelm.co</a>
       </div>
     </div>
 
-    <div class="contact-form-wrap reveal reveal-delay-1">
-      <h3>Tell us about the challenge</h3>
+    <div class="form-wrap reveal d1">
+      <h3>Tell us what's going on</h3>
+      <p>A few lines is enough. We just want to understand the situation before we talk.</p>
       <form id="contact-form">
-        <div class="form-group">
-          <label>Your name</label>
-          <input type="text" placeholder="Name" required />
-        </div>
-        <div class="form-group">
-          <label>Company</label>
-          <input type="text" placeholder="Company name" required />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your name</label>
+            <input type="text" placeholder="Name" required />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company" required />
+          </div>
         </div>
         <div class="form-group">
           <label>Email</label>
           <input type="email" placeholder="your@email.com" required />
         </div>
         <div class="form-group">
-          <label>What's the challenge?</label>
-          <textarea placeholder="Briefly describe what's going on — what's breaking, what you're trying to fix, or what you're trying to build..."></textarea>
+          <label>What's the situation?</label>
+          <textarea placeholder="What's going on? What's breaking? What are you trying to fix or build? Don't overthink it — a few lines is fine."></textarea>
         </div>
-        <button type="submit" class="form-submit">Send message →</button>
+        <button type="submit" class="form-submit">Send it →</button>
       </form>
     </div>
 
