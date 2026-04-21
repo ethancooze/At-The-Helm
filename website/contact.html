@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — At The Helm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/>
+      <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/>
+      <circle cx="50" cy="50" r="5" fill="currentColor"/>
+      <line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="50" cy="6" r="3.5" fill="currentColor"/>
+      <circle cx="50" cy="94" r="3.5" fill="currentColor"/>
+      <circle cx="6" cy="50" r="3.5" fill="currentColor"/>
+      <circle cx="94" cy="50" r="3.5" fill="currentColor"/>
+      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/>
+      <circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
+      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/>
+      <circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
+    </svg>
+    <span>At The Helm</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-sub">Contact</span>
+  <h1>Let's fix your operations.</h1>
+  <p>If your business is growing but operations are struggling to keep up, we can help. Book a call and we'll quickly assess whether it's a fit.</p>
+  <div style="margin-top: 48px;"><div class="gold-divider"></div></div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section-cream">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <h2 style="font-size: 26px; color: var(--navy); margin-bottom: 28px;">Send a message</h2>
+        <form id="contact-form">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Your company" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>What's the challenge?</label>
+            <textarea placeholder="Briefly describe what's broken or what you're trying to fix..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+      <div>
+        <h2 style="font-size: 26px; color: var(--navy); margin-bottom: 28px;">Book a call</h2>
+        <div class="calendly-placeholder">
+          <svg style="width:40px;height:40px;opacity:0.3;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="44" stroke="#1a2744" stroke-width="3.5"/>
+            <circle cx="50" cy="50" r="10" stroke="#1a2744" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="5" fill="#1a2744"/>
+            <line x1="50" y1="40" x2="50" y2="6" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="50" y1="60" x2="50" y2="94" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="40" y1="50" x2="6" y2="50" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="60" y1="50" x2="94" y2="50" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <p style="font-size: 16px; font-weight: 600; color: var(--navy);">Book an intro call</p>
+          <p>Calendly booking — coming soon</p>
+        </div>
+        <div class="email-cta">
+          Or email us directly: <a href="mailto:hello@atthehelm.co">hello@atthehelm.co</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/>
+      <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/>
+      <circle cx="50" cy="50" r="5" fill="currentColor"/>
+      <line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="50" cy="6" r="3.5" fill="currentColor"/>
+      <circle cx="50" cy="94" r="3.5" fill="currentColor"/>
+      <circle cx="6" cy="50" r="3.5" fill="currentColor"/>
+      <circle cx="94" cy="50" r="3.5" fill="currentColor"/>
+      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/>
+      <circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
+      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/>
+      <circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
+    </svg>
+    <span>At The Helm</span>
+  </div>
+  <p>© 2026 At The Helm. All rights reserved.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
