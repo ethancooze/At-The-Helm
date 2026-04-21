@@ -6,11 +6,397 @@
   <title>At The Helm — Embedded Operations Lead</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F5F0E8; --cream-dark: #EDE7D9;
+      --navy: #1a2744; --navy-light: #253560;
+      --gold: #C9A84C; --charcoal: #2C2C2C; --muted: #6B6B6B;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+      background: rgba(26,39,68,0.96);
+      backdrop-filter: blur(12px);
+      transition: background 0.3s;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .nav-logo svg { width: 28px; height: 28px; color: var(--gold); transition: transform 0.6s ease; }
+    .nav-logo:hover svg { transform: rotate(45deg); }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--cream); letter-spacing: 0.2px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: rgba(245,240,232,0.65); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta {
+      color: var(--gold) !important;
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 7px 18px; border-radius: 6px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; border-color: var(--gold) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 22px; height: 1.5px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 140px 10vw 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 80% at 85% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+    }
+    /* Animated grid lines */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: gridShift 20s linear infinite;
+    }
+    @keyframes gridShift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(80px); }
+    }
+    /* Floating wheel */
+    .hero-wheel {
+      position: absolute; right: 8vw; top: 50%;
+      transform: translateY(-50%);
+      width: 380px; height: 380px;
+      opacity: 0.06;
+      animation: slowSpin 40s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes slowSpin { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900; color: var(--cream);
+      line-height: 1.08; letter-spacing: -1px;
+      margin-bottom: 28px;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-size: 18px; color: rgba(245,240,232,0.6);
+      line-height: 1.7; max-width: 520px; margin-bottom: 48px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn-hero {
+      display: inline-block; padding: 15px 34px;
+      background: var(--gold); color: var(--navy);
+      border-radius: 8px; font-size: 14px; font-weight: 700;
+      letter-spacing: 0.3px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+    .btn-ghost {
+      font-size: 14px; color: rgba(245,240,232,0.5);
+      text-decoration: none; display: flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--cream); }
+    .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+    .btn-ghost:hover::after { transform: translateX(4px); }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 10vw;
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(245,240,232,0.25); display: flex; align-items: center; gap: 10px;
+    }
+    .hero-scroll::before {
+      content: ''; width: 1px; height: 40px;
+      background: rgba(201,168,76,0.3);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.35s; }
+
+    /* ── STATEMENT SECTION ── */
+    .section-statement {
+      padding: 120px 10vw;
+      background: var(--cream);
+    }
+    .statement-inner { max-width: 900px; }
+    .statement-tag {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 24px; display: block;
+    }
+    .statement-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--navy); line-height: 1.35;
+      font-weight: 400;
+    }
+    .statement-text strong { font-weight: 700; }
+    .statement-text em { color: var(--gold); font-style: italic; }
+    .statement-body {
+      font-size: 17px; color: var(--muted); line-height: 1.8;
+      max-width: 620px; margin-top: 32px;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--navy);
+      padding: 20px 0; overflow: hidden;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 25s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 0 40px; white-space: nowrap;
+      font-size: 13px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(245,240,232,0.35);
+    }
+    .marquee-item .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; opacity: 0.5; }
+
+    /* ── SPLIT SECTIONS ── */
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 70vh; align-items: stretch;
+    }
+    .split-visual {
+      position: relative; overflow: hidden;
+      background: var(--navy-light);
+      min-height: 500px;
+    }
+    .split-visual-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px;
+    }
+    /* Parallax canvas */
+    .parallax-canvas {
+      position: absolute; inset: -20%;
+      will-change: transform;
+    }
+    .vis-stat {
+      text-align: center; position: relative; z-index: 1;
+    }
+    .vis-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 88px; font-weight: 900; color: var(--cream);
+      line-height: 1; opacity: 0.15; position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none; white-space: nowrap;
+    }
+    .vis-graphic {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+    }
+    .vis-wheel {
+      width: 160px; height: 160px;
+      animation: slowSpin 30s linear infinite;
+    }
+    .vis-label {
+      font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; text-align: center;
+    }
+
+    .split-content {
+      padding: 80px 8vw;
+      display: flex; flex-direction: column; justify-content: center;
+      background: var(--cream-dark);
+    }
+    .split-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      color: var(--navy); line-height: 1.2; margin-bottom: 20px;
+    }
+    .split-content p {
+      font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; max-width: 480px;
+    }
+    .split-content .link-arrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; color: var(--navy);
+      text-decoration: none; margin-top: 16px;
+      border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+      transition: gap 0.2s;
+    }
+    .split-content .link-arrow:hover { gap: 14px; }
+
+    /* Dark split */
+    .split-content.dark {
+      background: var(--navy);
+    }
+    .split-content.dark h2 { color: var(--cream); }
+    .split-content.dark p { color: rgba(245,240,232,0.6); }
+    .split-content.dark .link-arrow { color: var(--gold); border-color: rgba(201,168,76,0.4); }
+    .split-visual.light { background: var(--cream-dark); }
+
+    /* ── WHAT WE FIX ── */
+    .fix-section {
+      padding: 120px 10vw;
+      background: var(--navy);
+    }
+    .fix-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      color: var(--cream); margin-bottom: 16px;
+    }
+    .fix-section > .fix-inner > p {
+      font-size: 17px; color: rgba(245,240,232,0.5);
+      max-width: 500px; line-height: 1.7; margin-bottom: 56px;
+    }
+    .fix-inner { max-width: 1100px; margin: 0 auto; }
+    .fix-items {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(245,240,232,0.08);
+      border: 1px solid rgba(245,240,232,0.08);
+      border-radius: 12px; overflow: hidden;
+    }
+    .fix-item {
+      padding: 36px 32px; background: var(--navy);
+      transition: background 0.3s; cursor: default;
+    }
+    .fix-item:hover { background: var(--navy-light); }
+    .fix-item-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700;
+      color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 12px;
+    }
+    .fix-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px; color: var(--cream); margin-bottom: 8px;
+    }
+    .fix-item p { font-size: 13px; color: rgba(245,240,232,0.45); line-height: 1.6; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      padding: 120px 10vw;
+      background: var(--cream);
+    }
+    .how-inner { max-width: 1000px; margin: 0 auto; }
+    .how-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      color: var(--navy); margin-bottom: 60px;
+    }
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 32px; padding: 40px 0;
+      border-bottom: 1px solid rgba(26,39,68,0.1);
+      align-items: start;
+      transition: background 0.2s;
+    }
+    .how-step:last-child { border-bottom: none; }
+    .how-step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px; font-weight: 900;
+      color: var(--gold); opacity: 0.2; line-height: 1;
+      transition: opacity 0.3s;
+    }
+    .how-step:hover .how-step-num { opacity: 0.6; }
+    .how-step-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--navy); margin-bottom: 10px;
+    }
+    .how-step-body p { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+    .how-step.featured { background: rgba(201,168,76,0.04); border-radius: 8px; padding: 40px 24px; }
+    .how-step.featured .how-step-num { opacity: 0.8; }
+    .how-step.featured h3 { color: var(--navy); }
+
+    /* ── BOTTOM CTA ── */
+    .cta-section {
+      padding: 120px 10vw;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    .cta-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(201,168,76,0.06) 0%, transparent 60%);
+    }
+    .cta-wheel {
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+      width: 480px; height: 480px; opacity: 0.04;
+      animation: slowSpin 50s linear infinite;
+    }
+    .cta-inner { max-width: 720px; position: relative; z-index: 1; }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 54px);
+      color: var(--cream); line-height: 1.2; margin-bottom: 20px;
+    }
+    .cta-section h2 em { color: var(--gold); font-style: italic; }
+    .cta-section p {
+      font-size: 17px; color: rgba(245,240,232,0.5);
+      line-height: 1.7; margin-bottom: 40px; max-width: 480px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111a2e;
+      padding: 40px 10vw;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo svg { width: 22px; height: 22px; color: var(--gold); opacity: 0.5; }
+    .footer-logo span { font-family: 'Playfair Display', serif; font-size: 14px; color: rgba(245,240,232,0.4); }
+    footer p { font-size: 12px; color: rgba(245,240,232,0.2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: fixed;
+        top: 68px; left: 0; right: 0; background: rgba(26,39,68,0.98);
+        padding: 32px 24px; gap: 24px; z-index: 99;
+        backdrop-filter: blur(12px);
+      }
+      .hero { padding: 120px 6vw 80px; }
+      .hero-wheel { display: none; }
+      .split { grid-template-columns: 1fr; }
+      .split-visual { min-height: 300px; }
+      .split-content { padding: 60px 6vw; }
+      .fix-items { grid-template-columns: 1fr; }
+      .how-section, .fix-section, .cta-section, .section-statement { padding: 80px 6vw; }
+      .cta-wheel { display: none; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 6vw; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,123 +411,248 @@
       <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="50" cy="6" r="3.5" fill="currentColor"/>
-      <circle cx="50" cy="94" r="3.5" fill="currentColor"/>
-      <circle cx="6" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="94" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
+      <circle cx="50" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="94" r="3.5" fill="currentColor"/>
+      <circle cx="6" cy="50" r="3.5" fill="currentColor"/><circle cx="94" cy="50" r="3.5" fill="currentColor"/>
+      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/><circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
+      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/><circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
     </svg>
     <span>At The Helm</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="case-studies.html">Case Studies</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">Book a Call</a></li>
   </ul>
-  <div class="hamburger"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <span class="hero-sub">Fractional Operations Lead</span>
-  <h1>Embedded Operations Lead.<br>COO-level execution.</h1>
-  <p>We step into your business, take ownership of operations, and deliver outcomes — not recommendations.</p>
-  <a href="contact.html" class="btn-primary">Book an Intro Call</a>
-  <div style="margin-top: 60px;"><div class="gold-divider"></div></div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <svg class="hero-wheel" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="44" stroke="#C9A84C" stroke-width="2"/>
+    <circle cx="50" cy="50" r="10" stroke="#C9A84C" stroke-width="1.5"/>
+    <circle cx="50" cy="50" r="5" fill="#C9A84C"/>
+    <line x1="50" y1="40" x2="50" y2="6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="50" y1="60" x2="50" y2="94" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="40" y1="50" x2="6" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="60" y1="50" x2="94" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="50" cy="6" r="3" fill="#C9A84C"/><circle cx="50" cy="94" r="3" fill="#C9A84C"/>
+    <circle cx="6" cy="50" r="3" fill="#C9A84C"/><circle cx="94" cy="50" r="3" fill="#C9A84C"/>
+    <circle cx="18.6" cy="18.6" r="3" fill="#C9A84C"/><circle cx="81.4" cy="81.4" r="3" fill="#C9A84C"/>
+    <circle cx="81.4" cy="18.6" r="3" fill="#C9A84C"/><circle cx="18.6" cy="81.4" r="3" fill="#C9A84C"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Fractional Operations Lead</div>
+    <h1>We take the<br><em>wheel.</em></h1>
+    <p class="hero-sub">Embedded into your business. Owning operations. Delivering outcomes — not recommendations.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-hero">Book an intro call</a>
+      <a href="services.html" class="btn-ghost">See what we do</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Supply chain <span class="dot"></span></div>
+    <div class="marquee-item">S&OP <span class="dot"></span></div>
+    <div class="marquee-item">3PL & logistics <span class="dot"></span></div>
+    <div class="marquee-item">NPD execution <span class="dot"></span></div>
+    <div class="marquee-item">Team structure <span class="dot"></span></div>
+    <div class="marquee-item">Operational infrastructure <span class="dot"></span></div>
+    <div class="marquee-item">Founder extraction <span class="dot"></span></div>
+    <div class="marquee-item">International ops <span class="dot"></span></div>
+    <div class="marquee-item">Supply chain <span class="dot"></span></div>
+    <div class="marquee-item">S&OP <span class="dot"></span></div>
+    <div class="marquee-item">3PL & logistics <span class="dot"></span></div>
+    <div class="marquee-item">NPD execution <span class="dot"></span></div>
+    <div class="marquee-item">Team structure <span class="dot"></span></div>
+    <div class="marquee-item">Operational infrastructure <span class="dot"></span></div>
+    <div class="marquee-item">Founder extraction <span class="dot"></span></div>
+    <div class="marquee-item">International ops <span class="dot"></span></div>
+  </div>
 </div>
 
-<!-- THE PROBLEM -->
-<section class="section-navy">
-  <div class="section-inner">
-    <span class="section-label">The Problem</span>
-    <h2 class="section-headline">Scaling a business sounds good — until operations start breaking.</h2>
-    <ul class="problem-list">
-      <li>You're stuck in the weeds</li>
-      <li>Teams aren't aligned</li>
-      <li>Processes don't scale</li>
-      <li>Problems keep resurfacing</li>
-      <li>No one truly owns operations</li>
-    </ul>
-    <p class="problem-close">At some point, growth creates chaos.</p>
+<!-- STATEMENT -->
+<section class="section-statement">
+  <div class="statement-inner">
+    <span class="statement-tag reveal">What we believe</span>
+    <p class="statement-text reveal reveal-delay-1">
+      Most operations problems aren't <em>strategy</em> problems.<br>
+      They're <strong>execution</strong> problems.
+    </p>
+    <p class="statement-body reveal reveal-delay-2">
+      Founders get great advice. They leave with a clear plan. Six months later, nothing has changed. Not because the plan was wrong — but because no one stayed to deliver it.
+    </p>
   </div>
 </section>
 
-<!-- THE DIFFERENCE -->
-<section class="section-cream">
-  <div class="section-inner">
-    <span class="section-label">The Difference</span>
-    <h2 class="section-headline">Most businesses don't need another consultant.<br>They need someone to actually fix it.</h2>
-    <div class="compare-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Consultants</th>
-            <th>At The Helm</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Recommend solutions</td><td>Implement them</td></tr>
-          <tr><td>Work externally</td><td>Embed in your team</td></tr>
-          <tr><td>Deliver decks</td><td>Build systems</td></tr>
-          <tr><td>No accountability</td><td>Own outcomes</td></tr>
-        </tbody>
-      </table>
+<!-- SPLIT — THE PROBLEM -->
+<div class="split">
+  <div class="split-visual" id="parallax-1">
+    <div class="parallax-canvas" style="background: linear-gradient(135deg, #1a2744 0%, #0d1729 100%);"></div>
+    <div class="split-visual-inner">
+      <div class="vis-stat-num">30%</div>
+      <div class="vis-graphic">
+        <svg class="vis-wheel" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="44" stroke="#C9A84C" stroke-width="2.5"/>
+          <circle cx="50" cy="50" r="10" stroke="#C9A84C" stroke-width="2"/>
+          <circle cx="50" cy="50" r="5" fill="#C9A84C"/>
+          <line x1="50" y1="40" x2="50" y2="6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="50" y1="60" x2="50" y2="94" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="40" y1="50" x2="6" y2="50" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="60" y1="50" x2="94" y2="50" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="50" cy="6" r="3.5" fill="#C9A84C"/><circle cx="50" cy="94" r="3.5" fill="#C9A84C"/>
+          <circle cx="6" cy="50" r="3.5" fill="#C9A84C"/><circle cx="94" cy="50" r="3.5" fill="#C9A84C"/>
+          <circle cx="18.6" cy="18.6" r="3.5" fill="#C9A84C"/><circle cx="81.4" cy="81.4" r="3.5" fill="#C9A84C"/>
+          <circle cx="81.4" cy="18.6" r="3.5" fill="#C9A84C"/><circle cx="18.6" cy="81.4" r="3.5" fill="#C9A84C"/>
+        </svg>
+        <div class="vis-label">Of operational capacity<br>lost to admin</div>
+      </div>
+    </div>
+  </div>
+  <div class="split-content dark reveal">
+    <span class="statement-tag">The problem</span>
+    <h2>Growth creates chaos. Someone has to fix it.</h2>
+    <p>As businesses scale, operations break. Processes built for £5m don't work at £20m. Founders end up running the business instead of building it. Teams lose direction. Nothing gets owned.</p>
+    <p>The answer isn't another consultant with a PowerPoint. It's someone who embeds into your team and actually fixes it.</p>
+    <a href="services.html" class="link-arrow">How we work</a>
+  </div>
+</div>
+
+<!-- SPLIT — THE DIFFERENCE -->
+<div class="split">
+  <div class="split-content reveal">
+    <span class="statement-tag" style="color: var(--gold);">The difference</span>
+    <h2>We don't advise. We execute.</h2>
+    <p>We step into your business as your Operations Lead. We attend your leadership meetings, manage your ops team, own your KPIs, and deliver outcomes. Every week.</p>
+    <p>When we leave, the systems stay. The team knows how to run them. The chaos doesn't come back.</p>
+    <a href="case-studies.html" class="link-arrow" style="color: var(--navy); border-color: var(--gold);">See the work</a>
+  </div>
+  <div class="split-visual light" id="parallax-2">
+    <div class="parallax-canvas" style="background: var(--cream-dark);"></div>
+    <div class="split-visual-inner">
+      <div style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 320px;">
+        <div style="background: white; border-radius: 10px; padding: 20px 22px; border-left: 3px solid var(--gold); box-shadow: 0 4px 20px rgba(26,39,68,0.08);">
+          <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px;">Consultants</div>
+          <div style="font-size: 15px; color: var(--muted); text-decoration: line-through;">Recommend. Present. Leave.</div>
+        </div>
+        <div style="text-align: center; font-size: 20px; color: var(--gold);">↓</div>
+        <div style="background: var(--navy); border-radius: 10px; padding: 20px 22px; border-left: 3px solid var(--gold); box-shadow: 0 8px 32px rgba(26,39,68,0.2);">
+          <div style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px;">At The Helm</div>
+          <div style="font-size: 15px; color: var(--cream); font-weight: 600;">Embed. Execute. Own it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE FIX -->
+<section class="fix-section">
+  <div class="fix-inner">
+    <span class="statement-tag reveal">What we fix</span>
+    <h2 class="reveal reveal-delay-1">Where we drive the most impact</h2>
+    <p class="reveal reveal-delay-2">Founder-led businesses between £5m–£25m, scaling fast, operations struggling to keep up.</p>
+    <div class="fix-items reveal reveal-delay-3">
+      <div class="fix-item">
+        <div class="fix-item-num">01</div>
+        <h4>Supply Chain</h4>
+        <p>End-to-end optimisation — suppliers, lead times, stock management, inbound and outbound.</p>
+      </div>
+      <div class="fix-item">
+        <div class="fix-item-num">02</div>
+        <h4>S&OP</h4>
+        <p>Sales and operations planning built from scratch, embedded into the team and running properly.</p>
+      </div>
+      <div class="fix-item">
+        <div class="fix-item-num">03</div>
+        <h4>3PL & Logistics</h4>
+        <p>Carrier selection, 3PL setup and management, international distribution build-outs.</p>
+      </div>
+      <div class="fix-item">
+        <div class="fix-item-num">04</div>
+        <h4>NPD Execution</h4>
+        <p>New product development from concept to commercial launch — on time, on budget.</p>
+      </div>
+      <div class="fix-item">
+        <div class="fix-item-num">05</div>
+        <h4>Team Structure</h4>
+        <p>Clear ownership, accountability frameworks, and operational cadence that sticks.</p>
+      </div>
+      <div class="fix-item">
+        <div class="fix-item-num">06</div>
+        <h4>Scaling Infrastructure</h4>
+        <p>The systems, processes, and people structures that support the next stage of growth.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT WE DO -->
-<section class="section-cream-dark">
-  <div class="section-inner">
-    <span class="section-label">What We Do</span>
-    <h2 class="section-headline">We take ownership of your operations and make them work.</h2>
-    <ul class="outcome-list">
-      <li>Build scalable operational systems</li>
-      <li>Fix supply chain and delivery issues</li>
-      <li>Align teams and accountability</li>
-      <li>Implement structure and cadence</li>
-      <li>Turn chaos into something that runs properly</li>
-    </ul>
-    <p class="outcome-close">No theory. Just execution.</p>
-  </div>
-</section>
-
 <!-- HOW IT WORKS -->
-<section class="section-cream">
-  <div class="section-inner">
-    <span class="section-label">How It Works</span>
-    <h2 class="section-headline">How it works</h2>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Diagnose</h3>
-        <p>Understand what's actually broken.</p>
+<section class="how-section">
+  <div class="how-inner">
+    <span class="statement-tag reveal">How it works</span>
+    <h2 class="reveal reveal-delay-1">Simple. Embedded. Effective.</h2>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-step-num">01</div>
+        <div class="how-step-body">
+          <h3>Intro call</h3>
+          <p>30 minutes. We understand the challenge, assess the fit, and decide whether to move forward. No hard sell, no long sales process.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Plan</h3>
-        <p>Prioritise what will move the needle.</p>
+      <div class="how-step reveal reveal-delay-1">
+        <div class="how-step-num">02</div>
+        <div class="how-step-body">
+          <h3>Operations diagnostic</h3>
+          <p>We spend time in your business. We identify what's genuinely broken, what's being ignored, and where the biggest leverage sits. We build an execution plan — and then we stay to deliver it.</p>
+        </div>
       </div>
-      <div class="step-card featured">
-        <div class="step-num">03</div>
-        <h3>Execute</h3>
-        <p>Embed into your team and deliver outcomes. This is the core of what we do.</p>
+      <div class="how-step featured reveal reveal-delay-2">
+        <div class="how-step-num">03</div>
+        <div class="how-step-body">
+          <h3>Embed & execute</h3>
+          <p>1–3 days per week inside your business. Part of your leadership team. We own operations, hold the team accountable, and drive outcomes week by week — until the business can run without us.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<div class="cta-section">
-  <h2>If operations are slowing your growth, let's fix it.</h2>
-  <a href="contact.html" class="btn-outline">Book Intro Call</a>
-</div>
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <svg class="cta-wheel" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="44" stroke="#C9A84C" stroke-width="2"/>
+    <circle cx="50" cy="50" r="10" stroke="#C9A84C" stroke-width="1.5"/>
+    <circle cx="50" cy="50" r="5" fill="#C9A84C"/>
+    <line x1="50" y1="40" x2="50" y2="6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="50" y1="60" x2="50" y2="94" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="40" y1="50" x2="6" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="60" y1="50" x2="94" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+  <div class="cta-inner reveal">
+    <span class="statement-tag">Ready?</span>
+    <h2>If operations are slowing your growth,<br><em>let's fix it.</em></h2>
+    <p>Book a 30-minute intro call. We'll quickly understand the challenge and tell you honestly whether we can help.</p>
+    <a href="contact.html" class="btn-hero">Book an intro call</a>
+  </div>
+</section>
 
 <footer>
   <div class="footer-logo">
@@ -153,24 +664,36 @@
       <line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
       <line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="50" cy="6" r="3.5" fill="currentColor"/>
-      <circle cx="50" cy="94" r="3.5" fill="currentColor"/>
-      <circle cx="6" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="94" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
     </svg>
     <span>At The Helm</span>
   </div>
   <p>© 2026 At The Helm. All rights reserved.</p>
 </footer>
 
-<script src="app.js"></script>
+<script>
+  // Mobile nav
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Parallax on scroll
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    document.querySelectorAll('[id^="parallax-"]').forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const canvas = section.querySelector('.parallax-canvas');
+      if (canvas) {
+        const offset = (rect.top / window.innerHeight) * 30;
+        canvas.style.transform = `translateY(${offset}px)`;
+      }
+    });
+  });
+</script>
 </body>
 </html>
