@@ -6,37 +6,74 @@
   <title>Case Studies — At The Helm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .page-hero {
+      min-height: 55vh; background: var(--navy);
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 140px 10vw 80px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+    .page-hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 80px 80px; animation: gridShift 20s linear infinite; }
+    @keyframes gridShift { 0% { transform: translateY(0); } 100% { transform: translateY(80px); } }
+    .page-hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .page-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .page-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 6vw, 72px); color: var(--cream); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+    .page-hero h1 em { color: var(--gold); font-style: italic; }
+    .page-hero p { font-size: 18px; color: rgba(245,240,232,0.55); line-height: 1.7; max-width: 540px; }
+
+    /* ── CASE STUDIES ── */
+    .cs-section { padding: 100px 10vw; background: var(--cream); }
+    .cs-inner { max-width: 1060px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px; }
+
+    .cs-block {
+      display: grid; grid-template-columns: 280px 1fr;
+      gap: 0; border-radius: 16px; overflow: hidden;
+      background: white; border: 1px solid rgba(26,39,68,0.08);
+      transition: box-shadow 0.3s;
+    }
+    .cs-block:hover { box-shadow: 0 16px 48px rgba(26,39,68,0.1); }
+
+    .cs-sidebar {
+      background: var(--navy); padding: 40px 32px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .cs-num {
+      font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900;
+      color: var(--gold); opacity: 0.2; line-height: 1;
+    }
+    .cs-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); line-height: 1.3; }
+    .cs-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; display: block; }
+
+    .cs-main { padding: 40px 44px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+
+    .cs-col h4 { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .cs-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .cs-col li { font-size: 14px; color: var(--charcoal); line-height: 1.55; display: flex; gap: 10px; align-items: flex-start; }
+    .cs-col li::before { content: ''; width: 16px; height: 1px; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
+    .cs-col.outcomes li::before { background: #2D6A4F; }
+    .cs-col.outcomes li { color: var(--charcoal); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .cs-block { grid-template-columns: 1fr; }
+      .cs-sidebar { padding: 28px 24px; }
+      .cs-num { font-size: 48px; }
+      .cs-main { grid-template-columns: 1fr; padding: 28px 24px; gap: 24px; }
+      .cs-section { padding: 80px 6vw; }
+    }
+  </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/>
-      <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/>
-      <circle cx="50" cy="50" r="5" fill="currentColor"/>
-      <line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="50" cy="6" r="3.5" fill="currentColor"/>
-      <circle cx="50" cy="94" r="3.5" fill="currentColor"/>
-      <circle cx="6" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="94" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
-    </svg>
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="94" r="3.5" fill="currentColor"/><circle cx="6" cy="50" r="3.5" fill="currentColor"/><circle cx="94" cy="50" r="3.5" fill="currentColor"/><circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/><circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/><circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/><circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/></svg>
     <span>At The Helm</span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="about.html">About</a></li>
@@ -44,35 +81,41 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">Book a Call</a></li>
   </ul>
-  <div class="hamburger"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <span class="hero-sub">The Work</span>
-  <h1>The Work</h1>
-  <p>Real problems. Real execution. Real outcomes.</p>
-  <div style="margin-top: 48px;"><div class="gold-divider"></div></div>
-</div>
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-eyebrow">The work</div>
+    <h1>Real problems.<br><em>Real outcomes.</em></h1>
+    <p>Not what we recommended. What we actually delivered.</p>
+  </div>
+</section>
 
-<!-- CASE STUDIES -->
-<section class="section-cream">
-  <div class="section-inner">
+<section class="cs-section">
+  <div class="cs-inner">
 
-    <div class="case-study">
-      <span class="case-study-tag">Case Study 01</span>
-      <h2>Supply Chain Stabilisation</h2>
-      <div class="case-study-grid">
+    <div class="cs-block reveal">
+      <div class="cs-sidebar">
+        <div class="cs-num">01</div>
+        <div>
+          <h3>Supply Chain Stabilisation</h3>
+          <span class="cs-tag">Consumer goods · UK</span>
+        </div>
+      </div>
+      <div class="cs-main">
         <div class="cs-col">
-          <h4>Problem</h4>
+          <h4>The problem</h4>
           <ul>
-            <li>Rapid growth created supply chain instability</li>
-            <li>Persistent stock issues across SKUs</li>
-            <li>Constant firefighting with no resolution</li>
+            <li>Rapid growth created supply chain instability the business couldn't control</li>
+            <li>Persistent stock issues across all SKUs</li>
+            <li>Constant firefighting with no structural fix</li>
           </ul>
         </div>
         <div class="cs-col">
-          <h4>What We Did</h4>
+          <h4>What we did</h4>
           <ul>
             <li>Took full ownership of supply chain and logistics</li>
             <li>Implemented S&OP process from scratch</li>
@@ -80,70 +123,81 @@
             <li>Introduced operational cadence across the team</li>
           </ul>
         </div>
-        <div class="cs-col">
+        <div class="cs-col outcomes">
           <h4>Outcome</h4>
           <ul>
             <li>Improved stock availability across all SKUs</li>
-            <li>Reduced operational noise and reactive firefighting</li>
-            <li>Scalable structure built for continued growth</li>
+            <li>Reactive firefighting replaced with structured ops</li>
+            <li>Scalable infrastructure built for continued growth</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <span class="case-study-tag">Case Study 02</span>
-      <h2>Founder Extraction</h2>
-      <div class="case-study-grid">
+    <div class="cs-block reveal reveal-delay-1">
+      <div class="cs-sidebar">
+        <div class="cs-num">02</div>
+        <div>
+          <h3>Founder Extraction</h3>
+          <span class="cs-tag">FMCG · UK</span>
+        </div>
+      </div>
+      <div class="cs-main">
         <div class="cs-col">
-          <h4>Problem</h4>
+          <h4>The problem</h4>
           <ul>
-            <li>Founder overloaded with day-to-day operations</li>
+            <li>Founder personally running all operations — no capacity to lead the business</li>
             <li>No clear ownership across the team</li>
             <li>Business unable to scale without founder involvement</li>
           </ul>
         </div>
         <div class="cs-col">
-          <h4>What We Did</h4>
+          <h4>What we did</h4>
           <ul>
             <li>Stepped in to run the ops function end-to-end</li>
             <li>Introduced team structure and clear accountability</li>
             <li>Implemented KPI tracking and weekly ops cadence</li>
-            <li>Took over leadership of the operational team</li>
+            <li>Took over direct leadership of the operational team</li>
           </ul>
         </div>
-        <div class="cs-col">
+        <div class="cs-col outcomes">
           <h4>Outcome</h4>
           <ul>
             <li>Founder fully removed from day-to-day operations</li>
-            <li>Clear ownership and accountability across all functions</li>
-            <li>Improved execution consistency across the business</li>
+            <li>Clear ownership established across all functions</li>
+            <li>Improved execution consistency throughout the business</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="case-study">
-      <span class="case-study-tag">Case Study 03</span>
-      <h2>International Ops Build</h2>
-      <div class="case-study-grid">
+    <div class="cs-block reveal reveal-delay-2">
+      <div class="cs-sidebar">
+        <div class="cs-num">03</div>
+        <div>
+          <h3>International Ops Build</h3>
+          <span class="cs-tag">Drinks · UK / EU / US</span>
+        </div>
+      </div>
+      <div class="cs-main">
         <div class="cs-col">
-          <h4>Problem</h4>
+          <h4>The problem</h4>
           <ul>
-            <li>Brand expanding into new markets with no operational infrastructure</li>
+            <li>Brand expanding into multiple new markets with no operational infrastructure</li>
             <li>Logistics, compliance, and fulfilment all undefined</li>
+            <li>No existing playbook or distribution framework</li>
           </ul>
         </div>
         <div class="cs-col">
-          <h4>What We Did</h4>
+          <h4>What we did</h4>
           <ul>
             <li>Built end-to-end supply chain for new market entry</li>
-            <li>Established 3PL and distribution partnerships</li>
+            <li>Established 3PL and distribution partnerships in-market</li>
             <li>Created compliance and documentation framework</li>
             <li>Delivered launch operations on time and within budget</li>
           </ul>
         </div>
-        <div class="cs-col">
+        <div class="cs-col outcomes">
           <h4>Outcome</h4>
           <ul>
             <li>Successful market entry with zero operational delays</li>
@@ -157,40 +211,24 @@
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section">
-  <h2>If operations are slowing your growth, let's fix it.</h2>
-  <a href="contact.html" class="btn-outline">Book Intro Call</a>
-</div>
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <svg class="cta-wheel" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#C9A84C" stroke-width="2"/><circle cx="50" cy="50" r="10" stroke="#C9A84C" stroke-width="1.5"/><circle cx="50" cy="50" r="5" fill="#C9A84C"/><line x1="50" y1="40" x2="50" y2="6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+  <div class="cta-inner reveal">
+    <span style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px;display:block;">Ready?</span>
+    <h2>If operations are slowing your growth,<br><em>let's fix it.</em></h2>
+    <p>Book a 30-minute intro call. We'll understand the challenge and tell you honestly whether we can help.</p>
+    <a href="contact.html" class="btn-hero">Book an intro call</a>
+  </div>
+</section>
 
 <footer>
   <div class="footer-logo">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/>
-      <circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/>
-      <circle cx="50" cy="50" r="5" fill="currentColor"/>
-      <line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="50" cy="6" r="3.5" fill="currentColor"/>
-      <circle cx="50" cy="94" r="3.5" fill="currentColor"/>
-      <circle cx="6" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="94" cy="50" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/>
-      <circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/>
-      <circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/>
-    </svg>
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
     <span>At The Helm</span>
   </div>
   <p>© 2026 At The Helm. All rights reserved.</p>
 </footer>
-
-<script src="app.js"></script>
+<script src="shared.js"></script>
 </body>
 </html>
