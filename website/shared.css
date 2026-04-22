@@ -13,7 +13,7 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--
 a{text-decoration:none;color:inherit;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background 0.4s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background 0.4s, transform 0.4s, opacity 0.4s;}
 nav.scrolled{background:rgba(8,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);}
 .nav-logo{display:flex;align-items:center;gap:12px;}
 .nav-logo svg{width:40px;height:40px;color:var(--gold);transition:transform 0.8s;}

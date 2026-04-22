@@ -36,7 +36,7 @@
       padding:0 60px;height:72px;
       display:flex;align-items:center;justify-content:space-between;
       background:transparent;
-      transition:background 0.4s;
+      transition:background 0.4s, transform 0.4s, opacity 0.4s;
     }
     nav.scrolled{background:rgba(8,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);}
     .nav-logo{display:flex;align-items:center;gap:10px;}
@@ -494,9 +494,9 @@
   <div class="change-inner">
     <div class="change-header reveal">
       <h2>What changes is hard to summarise on a website.</h2>
-      <p>The businesses we work with are all different. What's consistent is the outcome — founders who stop firefighting, operations that scale, teams that own their function. The case studies tell it better than we can here.</p>
+      <p>The businesses we work with are all different. What's consistent is the outcome — founders who stop firefighting, operations that scale, teams that own their function. The best way to understand it is a conversation.</p>
       <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:32px;">
-        <a href="case-studies.html" style="font-size:14px;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:2px;transition:gap 0.2s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">Read the case studies →</a>
+        
         <a href="contact.html" style="font-size:14px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border2);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Or just get in touch →</a>
       </div>
     </div>
@@ -604,7 +604,15 @@ document.querySelectorAll('.nav-menu a').forEach(a=>{
     document.body.style.overflow='';
   });
 });
-window.addEventListener('scroll',()=>{ nnav.classList.toggle('scrolled',window.scrollY>40); });
+let lastY=0;
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY;
+    if(y<80){nnav.style.transform='translateY(0)';nnav.style.opacity='1';}
+    else if(y>lastY){nnav.style.transform='translateY(-100%)';nnav.style.opacity='0';}
+    else{nnav.style.transform='translateY(0)';nnav.style.opacity='1';}
+    nnav.classList.toggle('scrolled',y>40);
+    lastY=y;
+  });
 
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>{

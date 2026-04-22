@@ -17,10 +17,16 @@ document.querySelectorAll('.nav-menu a').forEach(a => {
   });
 });
 
-// Nav background on scroll
+// Nav hide on scroll down
 const nav = document.querySelector('nav');
+let lastScrollY = 0;
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  const y = window.scrollY;
+  if (y < 80) { nav.style.transform = 'translateY(0)'; nav.style.opacity = '1'; }
+  else if (y > lastScrollY) { nav.style.transform = 'translateY(-100%)'; nav.style.opacity = '0'; }
+  else { nav.style.transform = 'translateY(0)'; nav.style.opacity = '1'; }
+  nav.classList.toggle('scrolled', y > 40);
+  lastScrollY = y;
 });
 
 // Scroll reveal
