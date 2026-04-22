@@ -84,11 +84,7 @@ nav.scrolled{background:rgba(8,13,26,0.85);backdrop-filter:blur(20px);border-bot
 .btn-hero:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,0.4);}
 
 /* FOOTER */
-footer{background:var(--black);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border2);position:relative;z-index:1;}
-.footer-logo{display:flex;align-items:center;gap:10px;}
-.footer-logo svg{width:20px;height:20px;color:var(--gold);opacity:0.4;}
-.footer-logo span{font-size:13px;color:var(--muted2);font-weight:500;}
-footer p{font-size:12px;color:rgba(240,239,232,0.15);}
+footer{background:var(--black);border-top:1px solid var(--border2);position:relative;z-index:1;}
 
 /* HOOK */
 .hook{padding:80px 10vw;background:var(--dark);}
