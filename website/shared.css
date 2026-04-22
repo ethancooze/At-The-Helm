@@ -2,7 +2,7 @@
    AT THE HELM — Shared CSS (inner pages) — Dark Theme
    ================================================ */
 :root{
-  --black:#050508;--dark:#0a0a12;--dark2:#0f0f1a;--dark3:#141420;
+  --black:#080d1a;--dark:#0a1020;--dark2:#0d1525;--dark3:#111828;
   --gold:#C9A84C;--gold-glow:rgba(201,168,76,0.15);--gold-dim:rgba(201,168,76,0.06);
   --white:#f0efe8;--muted:rgba(240,239,232,0.45);--muted2:rgba(240,239,232,0.25);
   --border:rgba(201,168,76,0.12);--border2:rgba(240,239,232,0.06);
