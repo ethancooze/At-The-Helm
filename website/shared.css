@@ -16,9 +16,9 @@ a{text-decoration:none;color:inherit;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background 0.4s;}
 nav.scrolled{background:rgba(8,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);}
 .nav-logo{display:flex;align-items:center;gap:12px;}
-.nav-logo svg{width:34px;height:34px;color:var(--gold);transition:transform 0.8s;}
+.nav-logo svg{width:40px;height:40px;color:var(--gold);transition:transform 0.8s;}
 .nav-logo:hover svg{transform:rotate(90deg);}
-.nav-logo span{font-size:20px;font-weight:600;color:var(--white);letter-spacing:-0.3px;}
+.nav-logo span{font-size:22px;font-weight:600;color:var(--white);letter-spacing:-0.3px;}
 .nav-links{display:none;}
 .hamburger{display:flex;flex-direction:column;gap:6px;cursor:pointer;padding:8px;}
 .hamburger span{width:24px;height:1.5px;background:var(--white);border-radius:2px;transition:all 0.3s;}
@@ -29,7 +29,7 @@ nav.scrolled{background:rgba(8,13,26,0.85);backdrop-filter:blur(20px);border-bot
 /* FULLSCREEN MENU */
 .nav-menu{
   position:fixed;inset:0;z-index:99;
-  background:rgba(8,13,26,0.97);backdrop-filter:blur(24px);
+  background:rgba(8,13,26,0.88);backdrop-filter:blur(18px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:0;opacity:0;pointer-events:none;
   transition:opacity 0.4s ease;
