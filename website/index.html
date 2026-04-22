@@ -589,9 +589,22 @@ function animate(){
 animate();
 
 // Nav
-document.getElementById('hamburger').addEventListener('click',()=>{
-  document.getElementById('nav-links').classList.toggle('open');
+const hbg=document.getElementById('hamburger');
+const nmenu=document.getElementById('nav-menu');
+const nnav=document.querySelector('nav');
+hbg.addEventListener('click',()=>{
+  hbg.classList.toggle('open');
+  nmenu.classList.toggle('open');
+  document.body.style.overflow=nmenu.classList.contains('open')?'hidden':'';
 });
+document.querySelectorAll('.nav-menu a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    hbg.classList.remove('open');
+    nmenu.classList.remove('open');
+    document.body.style.overflow='';
+  });
+});
+window.addEventListener('scroll',()=>{ nnav.classList.toggle('scrolled',window.scrollY>40); });
 
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>{
