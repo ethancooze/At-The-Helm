@@ -6,7 +6,7 @@
   <title>Case Studies — At The Helm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
     .page-hero { min-height: 60vh; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 10vw 80px; position: relative; overflow: hidden; }
@@ -20,10 +20,10 @@
     .page-hero p { font-size: 18px; color: rgba(245,240,232,0.5); line-height: 1.75; max-width: 560px; position: relative; z-index: 1; }
 
     /* ── CASE STUDIES ── */
-    .cs-section { padding: 100px 10vw; background: var(--cream); }
+    .cs-section { padding: 100px 10vw; background:var(--black); }
     .cs-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 80px; }
 
-    .cs { border-radius: 20px; overflow: hidden; background: white; box-shadow: 0 4px 32px rgba(26,39,68,0.07); transition: box-shadow 0.3s; }
+    .cs { border-radius: 20px; overflow: hidden; background:var(--dark3); box-shadow: 0 4px 32px rgba(26,39,68,0.07); transition: box-shadow 0.3s; }
     .cs:hover { box-shadow: 0 12px 48px rgba(26,39,68,0.13); }
 
     .cs-header { background: var(--navy); padding: 40px 48px; }
@@ -37,15 +37,15 @@
     .cs-body { padding: 44px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
     .cs-col h4 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 20px; }
     .cs-col ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-    .cs-col li { font-size: 15px; color: var(--charcoal); line-height: 1.6; display: flex; gap: 12px; align-items: flex-start; }
+    .cs-col li { font-size: 15px; color:var(--white); line-height: 1.6; display: flex; gap: 12px; align-items: flex-start; }
     .cs-col li::before { content: '—'; color: rgba(26,39,68,0.25); flex-shrink: 0; }
     .cs-col.outcomes li::before { content: '✓'; color: var(--gold); font-weight: 700; }
-    .cs-col.outcomes li { font-weight: 500; color: var(--navy); }
+    .cs-col.outcomes li { font-weight: 500; color:var(--white); }
 
     /* ── INTERLUDE ── */
-    .interlude { background: var(--cream-dark); padding: 80px 10vw; }
+    .interlude { background:var(--dark2); padding: 80px 10vw; }
     .interlude-inner { max-width: 760px; }
-    .interlude p { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,34px); color: var(--navy); line-height: 1.5; font-style: italic; }
+    .interlude p { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,34px); color:var(--white); line-height: 1.5; font-style: italic; }
     .interlude p em { color: var(--gold); }
 
     /* ── HOOK ── */

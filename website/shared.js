@@ -8,7 +8,7 @@ document.getElementById('hamburger').addEventListener('click', () => {
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Contact form
@@ -17,8 +17,9 @@ if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = 'Message sent ✓';
-    btn.style.background = '#2D6A4F';
+    btn.textContent = 'Sent ✓';
+    btn.style.background = '#4ade80';
+    btn.style.color = '#050508';
     btn.disabled = true;
   });
 }

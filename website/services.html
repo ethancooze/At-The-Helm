@@ -6,7 +6,7 @@
   <title>Services — At The Helm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400" rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
     .page-hero { min-height: 65vh; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 10vw 80px; position: relative; overflow: hidden; }
@@ -23,10 +23,10 @@
     .body-section { padding: 100px 10vw; }
     .body-inner { max-width: 860px; margin: 0 auto; }
 
-    .body-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 38px); color: var(--navy); line-height: 1.4; margin-bottom: 36px; font-weight: 400; }
+    .body-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 38px); color:var(--white); line-height: 1.4; margin-bottom: 36px; font-weight: 400; }
     .body-lead em { color: var(--gold); font-style: italic; }
     .body-text { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
-    .body-text strong { color: var(--charcoal); font-weight: 600; }
+    .body-text strong { color:var(--white); font-weight: 600; }
 
     /* ── OFFER CARD ── */
     .offer-card {
@@ -45,9 +45,9 @@
     .offer-detail.highlight p { color: rgba(245,240,232,0.7); }
 
     /* ── DIAGNOSTIC ── */
-    .diag-section { background: var(--cream-dark); padding: 100px 10vw; }
+    .diag-section { background:var(--dark2); padding: 100px 10vw; }
     .diag-inner { max-width: 860px; margin: 0 auto; }
-    .diag-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color: var(--navy); line-height: 1.35; margin-bottom: 32px; }
+    .diag-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color:var(--white); line-height: 1.35; margin-bottom: 32px; }
     .diag-lead em { color: var(--gold); font-style: italic; }
     .diag-body { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
     .diag-steps { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
@@ -55,20 +55,20 @@
     .diag-step:last-child { border-bottom: none; }
     .diag-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--gold); opacity: 0.2; line-height: 1; transition: opacity 0.3s; }
     .diag-step:hover .diag-num { opacity: 0.7; }
-    .diag-body-text h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 8px; }
+    .diag-body-text h3 { font-family: 'Playfair Display', serif; font-size: 20px; color:var(--white); margin-bottom: 8px; }
     .diag-body-text p { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
     /* ── AREAS ── */
-    .areas-section { background: var(--cream); padding: 100px 10vw; }
+    .areas-section { background:var(--black); padding: 100px 10vw; }
     .areas-inner { max-width: 1060px; margin: 0 auto; }
-    .areas-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color: var(--navy); max-width: 680px; line-height: 1.35; margin-bottom: 16px; }
+    .areas-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color:var(--white); max-width: 680px; line-height: 1.35; margin-bottom: 16px; }
     .areas-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 56px; }
     .areas-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(26,39,68,0.08); border: 1px solid rgba(26,39,68,0.08); border-radius: 14px; overflow: hidden; }
-    .area { background: var(--cream); padding: 32px 28px; transition: background 0.3s; position: relative; }
-    .area:hover { background: white; }
+    .area { background:var(--black); padding: 32px 28px; transition: background 0.3s; position: relative; }
+    .area:hover { background:var(--dark3); }
     .area::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--gold); transition: height 0.4s; }
     .area:hover::before { height: 100%; }
-    .area h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+    .area h4 { font-family: 'Playfair Display', serif; font-size: 18px; color:var(--white); margin-bottom: 8px; }
     .area p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
     /* ── HOOK ── */
@@ -112,13 +112,13 @@
   <p>What we do is difficult to describe in full on a website — because it looks different in every business we work with. The best way to understand it is a conversation.</p>
 </section>
 
-<section class="body-section" style="background:var(--cream);">
+<section class="body-section" style="background:var(--black);">
   <div class="body-inner">
     <p class="body-lead reveal">We embed into your business and <em>run your operations.</em></p>
     <p class="body-text reveal d1">Not on a call. Not in a report. Inside your team — in the room, in the decisions, accountable for what happens next. The specifics of how that works depend entirely on the business. Every engagement looks different.</p>
     <p class="body-text reveal d2">What doesn't change is the outcome. When we leave, the chaos doesn't come back.</p>
     <div style="margin-top:40px;" class="reveal d3">
-      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">Tell us about your situation →</a>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--white);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">Tell us about your situation →</a>
     </div>
   </div>
 </section>
@@ -128,9 +128,9 @@
     <p class="diag-lead reveal">Not sure where to start? <em>That's fine. Most people aren't.</em></p>
     <p class="diag-body reveal d1">Most founders we talk to know something is wrong. They just can't quite put their finger on what — or they can, but they don't know how to fix it without breaking everything else.</p>
     <p class="diag-body reveal d2">That's where we begin. Before we take ownership of anything, we spend time properly understanding what's actually going on. The approach depends on the business. The outcome doesn't — we leave you with a clear picture and a plan we then deliver ourselves.</p>
-    <p class="diag-body reveal d3" style="font-style:italic;color:var(--charcoal);">If you're curious what that looks like for your business specifically, the quickest way to find out is a conversation.</p>
+    <p class="diag-body reveal d3" style="font-style:italic;color:var(--white);">If you're curious what that looks like for your business specifically, the quickest way to find out is a conversation.</p>
     <div style="margin-top:40px;" class="reveal">
-      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">Book an intro call →</a>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--white);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">Book an intro call →</a>
     </div>
   </div>
 </section>
@@ -141,7 +141,7 @@
     <p class="areas-sub reveal d1">Supply chain, logistics, team structure, NPD, S&OP, international expansion. The specifics depend on what your business actually needs — which is something we figure out together, not something we decide in advance.</p>
     <p style="font-size:17px;color:var(--muted);line-height:1.8;max-width:640px;margin-top:0;" class="reveal d2">The case studies give the best sense of what that looks like in practice. Or if you'd rather just have a conversation, that works too.</p>
     <div style="margin-top:40px;display:flex;gap:32px;flex-wrap:wrap;" class="reveal d3">
-      <a href="case-studies.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">See the case studies →</a>
+      <a href="case-studies.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--white);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">See the case studies →</a>
       <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(26,39,68,0.2);padding-bottom:2px;">Or just get in touch →</a>
     </div>
   </div>
