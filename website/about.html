@@ -1,84 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - At The Helm</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400" rel="stylesheet" />
-  <link rel="stylesheet" href="shared.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — At The Helm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
   <style>
-    .page-hero { min-height: 65vh; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 10vw 80px; position: relative; overflow: hidden; }
-    .page-hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 50% 70% at 10% 70%, rgba(201,168,76,0.07) 0%, transparent 60%); }
-    .page-hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 80px 80px; animation: gridShift 20s linear infinite; }
-    @keyframes gridShift { 0%{transform:translateY(0)} 100%{transform:translateY(80px)} }
-    .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
-    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 70px); color: var(--cream); font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; position: relative; z-index: 1; }
-    .page-hero h1 em { color: var(--gold); font-style: italic; }
-    .page-hero p { font-size: 18px; color: rgba(245,240,232,0.5); line-height: 1.75; max-width: 560px; position: relative; z-index: 1; }
+    section { position: relative; z-index: 1; }
 
-    /* ── BODY ── */
-    .body-section { padding: 100px 10vw; }
-    .body-inner { max-width: 860px; margin: 0 auto; }
-    .body-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color:var(--white); line-height: 1.4; margin-bottom: 36px; font-weight: 400; }
-    .body-lead em { color: var(--gold); font-style: italic; }
-    .body-text { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
-    .body-text strong { color:var(--white); font-weight: 600; }
+    /* ── STORY ── */
+    .story-section { padding: 100px 10vw; }
+    .story-inner { max-width: 860px; margin: 0 auto; }
+    .story-lead { font-size: clamp(22px, 3vw, 36px); font-weight: 600; color: var(--white); line-height: 1.35; letter-spacing: -0.5px; margin-bottom: 32px; }
+    .story-lead .grad { background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .story-text { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+    .story-text strong { color: rgba(240,239,232,0.8); font-weight: 500; }
 
-    /* ── PULL QUOTE ── */
-    .pull { background: var(--navy); padding: 80px 10vw; position: relative; overflow: hidden; }
-    .pull-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 100% at 100% 50%, rgba(201,168,76,0.05) 0%, transparent 60%); }
-    .pull-inner { position: relative; z-index: 1; max-width: 800px; }
-    .pull-mark { font-family: 'Playfair Display', serif; font-size: 100px; color: var(--gold); opacity: 0.12; line-height: 0.6; margin-bottom: 20px; }
-    .pull-text { font-family: 'Playfair Display', serif; font-size: clamp(20px,3vw,34px); color: var(--cream); line-height: 1.5; font-style: italic; }
-    .pull-text em { color: var(--gold); }
+    /* ── FOUNDER ── */
+    .founder-section { padding: 0 10vw 100px; }
+    .founder-inner { max-width: 1060px; margin: 0 auto; }
+    .founder-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 24px; padding: 56px;
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 64px; align-items: start;
+      position: relative; overflow: hidden;
+    }
+    .founder-card::before {
+      content: '';
+      position: absolute; bottom: -30%; right: -10%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .founder-left { position: relative; z-index: 1; }
+    .founder-avatar {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; font-weight: 700; color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 24px;
+    }
+    .founder-name { font-size: 24px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; margin-bottom: 6px; }
+    .founder-role { font-size: 13px; color: var(--gold); font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; opacity: 0.8; }
+    .founder-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted2);
+      background: rgba(240,239,232,0.04); border: 1px solid var(--border2);
+      padding: 5px 12px; border-radius: 20px;
+    }
+    .founder-right { position: relative; z-index: 1; }
+    .founder-bio { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+    .founder-bio strong { color: rgba(240,239,232,0.8); font-weight: 500; }
+    .founder-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+    .stat {
+      padding: 20px 16px;
+      background: rgba(201,168,76,0.04);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 12px; text-align: center;
+    }
+    .stat-num { font-size: 28px; font-weight: 700; color: var(--gold); letter-spacing: -0.5px; line-height: 1; margin-bottom: 6px; font-family: 'Space Grotesk', sans-serif; }
+    .stat-label { font-size: 11px; color: var(--muted2); letter-spacing: 0.5px; line-height: 1.4; }
 
-    /* ── VALUES ── */
-    .values-section { background:var(--dark2); padding: 100px 10vw; }
-    .values-inner { max-width: 1060px; margin: 0 auto; }
-    .values-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color:var(--white); max-width: 680px; line-height: 1.35; margin-bottom: 56px; }
-    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .value { background:var(--dark3); border-radius: 14px; padding: 36px 32px; border-top: 3px solid transparent; transition: border-color 0.3s, transform 0.3s; }
-    .value:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .value h3 { font-family: 'Playfair Display', serif; font-size: 20px; color:var(--white); margin-bottom: 12px; font-style: italic; }
-    .value p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+    /* ── QUOTE ── */
+    .quote-section { padding: 0 10vw 100px; }
+    .quote-inner {
+      max-width: 860px; margin: 0 auto;
+      background: rgba(201,168,76,0.03);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 52px;
+      position: relative; overflow: hidden;
+    }
+    .quote-inner::before { content: '"'; position: absolute; top: -10px; left: 32px; font-family: 'Playfair Display', serif; font-size: 120px; color: var(--gold); opacity: 0.06; line-height: 1; pointer-events: none; }
+    .quote-text { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.5vw, 28px); color: var(--white); line-height: 1.5; font-style: italic; position: relative; z-index: 1; }
+    .quote-text em { color: var(--gold); }
 
-    /* ── WHO WE WORK WITH ── */
-    .who-section { background:var(--black); padding: 100px 10vw; }
+    /* ── WHO ── */
+    .who-section { padding: 0 10vw 120px; }
     .who-inner { max-width: 860px; margin: 0 auto; }
-    .who-lead { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,38px); color:var(--white); line-height: 1.35; margin-bottom: 32px; }
-    .who-lead em { color: var(--gold); font-style: italic; }
-    .who-text { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
-    .who-text strong { color:var(--white); font-weight: 600; }
-
-    /* ── HOOK ── */
-    .hook { background: var(--navy); padding: 80px 10vw; }
-    .hook-inner { max-width: 760px; }
-    .hook p { font-family: 'Playfair Display', serif; font-size: clamp(20px,2.5vw,30px); color: var(--cream); line-height: 1.5; margin-bottom: 32px; font-style: italic; }
-    .hook p em { color: var(--gold); }
-    .hook-links { display: flex; gap: 32px; flex-wrap: wrap; }
-    .hook-link { font-size: 15px; font-weight: 600; color: var(--cream); text-decoration: none; display: flex; align-items: center; gap: 8px; opacity: 0.6; transition: opacity 0.2s, gap 0.2s; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 2px; }
-    .hook-link:hover { opacity: 1; gap: 14px; }
+    .who-inner h2 { font-size: clamp(22px, 3vw, 34px); font-weight: 700; color: var(--white); letter-spacing: -0.5px; margin-bottom: 20px; line-height: 1.2; }
+    .who-inner p { font-size: 17px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+    .who-inner strong { color: rgba(240,239,232,0.8); font-weight: 500; }
 
     @media (max-width: 900px) {
-      .values-grid { grid-template-columns: 1fr; }
-      .body-section, .values-section, .who-section, .pull, .hook { padding: 80px 6vw; }
+      .founder-card { grid-template-columns: 1fr; gap: 36px; padding: 32px 24px; }
+      .founder-stats { grid-template-columns: 1fr 1fr; }
+      .story-section, .founder-section, .quote-section, .who-section { padding-left: 6vw; padding-right: 6vw; }
+      .quote-inner { padding: 32px 24px; }
     }
   </style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="94" r="3.5" fill="currentColor"/><circle cx="6" cy="50" r="3.5" fill="currentColor"/><circle cx="94" cy="50" r="3.5" fill="currentColor"/><circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/><circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/><circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/><circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/></svg>
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="42.9" x2="18.6" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="57.1" x2="81.4" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="57.1" y1="42.9" x2="81.4" y2="18.6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="42.9" y1="57.1" x2="18.6" y2="81.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="94" r="3.5" fill="currentColor"/><circle cx="6" cy="50" r="3.5" fill="currentColor"/><circle cx="94" cy="50" r="3.5" fill="currentColor"/><circle cx="18.6" cy="18.6" r="3.5" fill="currentColor"/><circle cx="81.4" cy="81.4" r="3.5" fill="currentColor"/><circle cx="81.4" cy="18.6" r="3.5" fill="currentColor"/><circle cx="18.6" cy="81.4" r="3.5" fill="currentColor"/></svg>
     <span>At The Helm</span>
   </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="about.html" class="active">About</a></li>
-    <li><a href="case-studies.html">Case Studies</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">Book a Call</a></li>
   </ul>
@@ -86,72 +113,88 @@
 </nav>
 
 <section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="page-hero-grid"></div>
-  <div class="eyebrow">About</div>
-  <h1>We've been in it.<br>That's why founders<br><em>trust us.</em></h1>
-  <p>Not because of what we say. Because of what we've done — inside real businesses, under real pressure, with real consequences if we got it wrong.</p>
+  <div class="hero-glow-r"></div>
+  <div class="page-eyebrow">About</div>
+  <h1>Built from the inside.<br><span class="grad">Not the outside.</span></h1>
+  <p>We've spent careers inside businesses — running operations, managing complexity, and fixing things under real pressure. Not advising. Doing.</p>
 </section>
 
-<section class="body-section" style="background:var(--black);">
-  <div class="body-inner">
-    <p class="body-lead reveal">We've spent years <em>inside</em> businesses.</p>
-    <p class="body-text reveal d1">Running supply chains. Managing teams. Making the calls nobody else wanted to make. Staying late when things went wrong and being there early when the next problem arrived. Not advising. Doing.</p>
-    <p class="body-text reveal d2">That's the experience we bring into every business we work with. And it's why the founders we work with trust us to be genuinely inside their operation — not on the outside looking in.</p>
-    <p class="body-text reveal d3">We're not going to explain everything on this page. <strong>Some things are better understood through a conversation.</strong></p>
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-inner">
+    <p class="story-lead reveal">The advice is usually good. <span class="grad">The execution is where it falls apart.</span></p>
+    <p class="story-text reveal d1">We've been inside the meetings. We've seen the founder nod along at the consultant's strategy. And we've been there three months later when nothing has changed — because the people who built the plan went home.</p>
+    <p class="story-text reveal d2"><strong>That gap — between what needs to happen and what actually gets done — is where we work.</strong> We come in, embed into the business, and stay until the job is finished.</p>
   </div>
 </section>
 
-<div class="pull">
-  <div class="pull-bg"></div>
-  <div class="pull-inner reveal">
-    <div class="pull-mark">“</div>
-    <p class="pull-text">We've held it together at 11pm.<br>We know what it costs.<br>And we know <em>exactly</em> how to fix it.</p>
-  </div>
-</div>
-
-<section class="values-section">
-  <div class="values-inner">
-    <p class="values-lead reveal">We're not going to tell you everything about how we work on a website.</p>
-    <p style="font-size:17px;color:var(--muted);line-height:1.85;max-width:680px;margin-bottom:40px;" class="reveal d1">The way we engage depends entirely on the business - the size, the stage, the specific problem, the team. Cookie-cutter approaches don't work in operations. Anyone who tells you otherwise hasn't actually done it.</p>
-    <p style="font-size:17px;color:var(--muted);line-height:1.85;max-width:680px;" class="reveal d2">What we can tell you is that every business we've worked with has left in a better position than when we arrived. Not just marginally better - structurally, permanently better. The founders we work with stop firefighting. The businesses we leave behind can grow without us.</p>
-    <div style="margin-top:48px;" class="reveal d3">
-      <a href="case-studies.html" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--white);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">See what that looks like in practice →</a>
+<!-- FOUNDER -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-card reveal">
+      <div class="founder-left">
+        <div class="founder-avatar">EC</div>
+        <div class="founder-name">Ethan Cooze</div>
+        <div class="founder-role">Founder · At The Helm</div>
+        <div class="founder-tags">
+          <span class="tag">Supply Chain</span>
+          <span class="tag">FMCG</span>
+          <span class="tag">Operations</span>
+          <span class="tag">S&OP</span>
+          <span class="tag">3PL</span>
+          <span class="tag">NPD</span>
+        </div>
+      </div>
+      <div class="founder-right">
+        <p class="founder-bio">Supply Chain Director at a <strong>£100m+ UK consumer brand</strong> — one of the first ten employees, there from the early days through scale. Ethan has spent the past several years owning operations end-to-end: building supply chains from scratch across the UK, EU and US, leading 3PL tenders and warehouse transitions, managing NPD pipelines, and running systems integrations that actually worked.</p>
+        <p class="founder-bio">He built At The Helm because he's lived the problem from the inside. <strong>He knows exactly what breaks, why it breaks, and how to fix it without burning down what's already working.</strong></p>
+        <div class="founder-stats">
+          <div class="stat">
+            <div class="stat-num">£100m+</div>
+            <div class="stat-label">Revenue scale managed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">UK · EU · US</div>
+            <div class="stat-label">Supply chains built</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Years in FMCG ops leadership</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner reveal">
+    <p class="quote-text">We've held it together at 11pm. We know what it costs. And we know <em>exactly</em> how to fix it.</p>
+  </div>
+</section>
+
+<!-- WHO -->
 <section class="who-section">
   <div class="who-inner">
-    <p class="who-lead reveal">We're selective about who we work with. <em>Deliberately so.</em></p>
-    <p class="who-text reveal d1">Not every business is a fit for us - and we'd rather tell you that upfront than waste your time. The businesses we work best with tend to be founder-led, scaling fast, and at the point where operations have become the thing that's slowing everything else down.</p>
-    <p class="who-text reveal d2">If that's you, we should talk. If it's not quite there yet, we'll tell you - and we'll probably have a view on what to do instead.</p>
+    <h2 class="reveal">We're selective. <span style="color:var(--gold)">Deliberately so.</span></h2>
+    <p class="reveal d1">Not every business is a fit — and we'd rather tell you that upfront than waste your time. The businesses we work best with tend to be founder-led, scaling fast, and at the point where operations have become the thing slowing everything else down.</p>
+    <p class="reveal d2">If that's you, <strong>we should talk.</strong> If it's not quite there yet, we'll tell you — and we'll probably have a view on what to do instead.</p>
   </div>
 </section>
 
-<div class="hook">
-  <div class="hook-inner reveal">
-    <p>Still figuring out if we're the right fit? <em>The case studies will tell you more than this page can.</em></p>
-    <div class="hook-links">
-      <a href="case-studies.html" class="hook-link">Read the case studies →</a>
-      <a href="contact.html" class="hook-link">Or just get in touch →</a>
-    </div>
-  </div>
-</div>
-
 <section class="cta-section">
-  <div class="cta-bg"></div>
-  <svg class="cta-wheel" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#C9A84C" stroke-width="2"/><circle cx="50" cy="50" r="10" stroke="#C9A84C" stroke-width="1.5"/><circle cx="50" cy="50" r="5" fill="#C9A84C"/><line x1="50" y1="40" x2="50" y2="6" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+  <div class="cta-glow"></div>
   <div class="cta-inner reveal">
-    <h2>Sound familiar?<br><em>Let's talk.</em></h2>
+    <h2>Sound familiar? <span class="grad">Let's talk.</span></h2>
     <p>30 minutes. No pitch. If we can help, we'll tell you. If we can't, we'll tell you that too.</p>
-    <a href="contact.html" class="btn-hero">Book an intro call</a>
+    <a href="contact.html" class="btn-hero">Book an intro call →</a>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">
-    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3.5"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="40" x2="50" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="60" x2="50" y2="94" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="50" x2="6" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="50" x2="94" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
     <span>At The Helm</span>
   </div>
   <p>© 2026 At The Helm. All rights reserved.</p>
