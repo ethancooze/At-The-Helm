@@ -1,8 +1,26 @@
 // At The Helm — shared.js
 
-// Mobile nav
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('nav-links').classList.toggle('open');
+// Fullscreen nav menu
+const hamburger = document.getElementById('hamburger');
+const menu = document.getElementById('nav-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+});
+// Close on link click
+document.querySelectorAll('.nav-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Nav background on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
 // Scroll reveal
